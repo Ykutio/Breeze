@@ -14,16 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () {return view('welcome');});
 
 Route::middleware(['role:admin|manager'])->prefix('admin_panel')->group(function (){
-    Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index']);
+    Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])
+        ->name('adminpanel_home');
+    Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
+Route::get('/dashboard', function () {return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

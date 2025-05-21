@@ -12,8 +12,14 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard v1</li>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <x-responsive-nav-link :href="route('logout')"
+                                               onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                            Log Out
+                        </x-responsive-nav-link>
+                    </form>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->

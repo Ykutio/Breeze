@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('img');
             $table->bigInteger('cat_id')->unsigned();
             $table->timestamp('created')->useCurrent();
-            $table->timestamp('updated')->useCurrentOnUpdate();
+            $table->timestamp('updated')->useCurrent()->useCurrentOnUpdate();
         });
     }
 
